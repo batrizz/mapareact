@@ -1,22 +1,49 @@
 .list {
-  background: white;
+  background: #f4f9fc;
   width: 50rem;
   text-align: center;
+  overflow-y: scroll;
+  height: calc(117vh - 7rem);
   h1 {
     text-align: center;
+    font: 600 2rem Quicksand, sans-serif;
+    background: #f4f9fc;
+    position: fixed;
+    margin: 0;
+    padding: 2rem 4rem;
+  }
+  .info {
+    display: flex;
+    background: #d3d3d3;
+    margin: 7rem 2rem 0 2rem;
+    gap: 2.5rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid #a9a9a9;
+    p {
+      font: 500 1rem Quicksand, sans-serif;
+    }
   }
   ul {
     list-style: none;
-
+    margin: 0 2rem;
+    padding: 0;
+    margin-bottom: 2rem;
     div {
       display: flex;
-      .lat {
-        flex: 1;
-
-        align-items: left;
-      }
+      align-items: left;
       .lng {
-        flex: 2;
+        background: #f4f9fc;
+        width: 8rem;
+      }
+      .lat {
+        width: 8rem;
+      }
+      li {
+        border-bottom: 1px solid #a9a9a9;
+        background: #edeee9;
+        width: 13rem;
+        margin: 0;
+        padding: 1rem 0;
       }
     }
   }

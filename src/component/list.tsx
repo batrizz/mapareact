@@ -8,40 +8,45 @@ type Marker = {
 }
 type Props = {
   markers: Marker[]
-  radius: number
-  setRadius: any
-  setMarkers: any
+  setMarkers: React.Dispatch<React.SetStateAction<any[]>>
 }
-export function List({ markers, radius, setMarkers }: Props) {
+export function List({ markers, setMarkers }: Props) {
   return (
     <form className={styles.list}>
       <h1>Lista de Coordenadas</h1>
+
+      <div className={styles.info}>
+        <p>Latitude</p>
+        <p>Longitude</p>
+        <p>Raio</p>
+      </div>
+
       <ul>
         {markers?.map(e => {
           return (
-            <div>
+            <div key={`${e.id}`}>
               <li className={styles.lat}>{e.lat}</li>
               <li className={styles.lng}>{e.lng}</li>
               <li>
                 <input
                   type="range"
-                  min="100"
-                  max="2000"
+                  min="1000"
+                  max="20000"
                   value={e.radius}
                   onChange={event => {
-                    //setRadius(Number(e.target.value)
                     const newMarkers = markers.map(marker => {
-                      if (marker == e) {
+                      if (marker.id == e.id) {
                         return {
                           ...marker,
                           radius: Number(event.target.value)
                         }
                       }
+                      return marker
                     })
                     setMarkers(newMarkers)
                   }}
                 />
-                <output>{e.radius}</output>
+                <output>{(e.radius / 1000).toFixed(0)} Km</output>
               </li>
             </div>
           )

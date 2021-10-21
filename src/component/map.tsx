@@ -13,10 +13,9 @@ import 'leaflet-defaulticon-compatibility'
 type Props = {
   markers: any[]
   setMarkers: React.Dispatch<React.SetStateAction<any[]>>
-  radius: number
 }
 
-function LocationMarker({ markers, setMarkers, radius }: Props) {
+function LocationMarker({ markers, setMarkers }: Props) {
   useMapEvents({
     click(e) {
       setMarkers([
@@ -25,7 +24,7 @@ function LocationMarker({ markers, setMarkers, radius }: Props) {
           id: markers.length + 1,
           lat: e.latlng.lat.toFixed(4),
           lng: e.latlng.lng.toFixed(4),
-          radius: 10
+          radius: 1000
         }
       ])
     }
@@ -51,23 +50,16 @@ function LocationMarker({ markers, setMarkers, radius }: Props) {
   )
 }
 
-const Map = ({ markers, setMarkers, radius }: Props) => {
+const Map = ({ markers, setMarkers }: Props) => {
   return (
     <MapContainer
-      center={[40.80166061949343, -74.03180412546854]}
-      zoom={14}
+      center={[-23.5612, -46.6305]}
+      zoom={12}
       scrollWheelZoom={false}
       style={{ height: '100%', width: '100%' }}
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-      />
-      <LocationMarker
-        markers={markers}
-        setMarkers={setMarkers}
-        radius={radius}
-      />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <LocationMarker markers={markers} setMarkers={setMarkers} />
     </MapContainer>
   )
 }

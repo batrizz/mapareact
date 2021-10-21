@@ -5,7 +5,6 @@ import { List } from '../component/list'
 
 export default function Home() {
   const [markers, setMarkers] = useState([])
-  const [radius, setRadius] = useState(0)
   const MapWithNoSSR = dynamic(() => import('../component/map'), {
     ssr: false
   })
@@ -13,18 +12,9 @@ export default function Home() {
   return (
     <main>
       <div id="map">
-        <MapWithNoSSR
-          markers={markers}
-          setMarkers={setMarkers}
-          radius={radius}
-        />
+        <MapWithNoSSR markers={markers} setMarkers={setMarkers} />
       </div>
-      <List
-        markers={markers}
-        radius={radius}
-        setMarkers={setMarkers}
-        setRadius={setRadius}
-      />
+      <List markers={markers} setMarkers={setMarkers} />
     </main>
   )
 }
