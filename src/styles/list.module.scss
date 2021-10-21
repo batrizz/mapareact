@@ -1,0 +1,23 @@
+.list {
+  background: white;
+  width: 50rem;
+  text-align: center;
+  h1 {
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+
+    div {
+      display: flex;
+      .lat {
+        flex: 1;
+
+        align-items: left;
+      }
+      .lng {
+        flex: 2;
+      }
+    }
+  }
+}

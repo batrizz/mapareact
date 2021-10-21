@@ -1,0 +1,13 @@
+html,
+body,
+#__next,
+main,
+#map {
+  font-family: 'Rubik', sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  z-index: 0;
+}
