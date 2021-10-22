@@ -23,6 +23,9 @@ export function List({ markers, setMarkers }: Props) {
 
       <ul>
         {markers?.map(e => {
+          function deletarCoordenada() {
+            setMarkers(markers.filter(item => item.id !== e.id))
+          }
           return (
             <div key={`${e.id}`}>
               <li className={styles.lat}>{e.lat}</li>
@@ -48,6 +51,9 @@ export function List({ markers, setMarkers }: Props) {
                 />
                 <output>{(e.radius / 1000).toFixed(0)} Km</output>
               </li>
+              <button type="button" onClick={() => deletarCoordenada()}>
+                Delete
+              </button>
             </div>
           )
         })}
