@@ -1,3 +1,4 @@
+import { marker } from 'leaflet'
 import styles from '../styles/list.module.scss'
 
 type Marker = {
@@ -11,16 +12,16 @@ type Props = {
   setMarkers: React.Dispatch<React.SetStateAction<any[]>>
 }
 export function List({ markers, setMarkers }: Props) {
+  function removeList() {
+    setMarkers([])
+  }
   return (
     <form className={styles.list}>
-      <h1>Lista de Coordenadas</h1>
-
       <div className={styles.info}>
         <p>Latitude</p>
         <p>Longitude</p>
-        <p>Raio</p>
+        <p className={styles.raio}>Raio</p>
       </div>
-
       <ul>
         {markers?.map(e => {
           function deletarCoordenada() {
@@ -51,13 +52,23 @@ export function List({ markers, setMarkers }: Props) {
                 />
                 <output>{(e.radius / 1000).toFixed(0)} Km</output>
               </li>
-              <button type="button" onClick={() => deletarCoordenada()}>
-                Delete
-              </button>
+              <img
+                className={styles.trash}
+                src="/trash.svg"
+                alt="Deletar"
+                onClick={() => deletarCoordenada()}
+              />
             </div>
           )
         })}
       </ul>
+      {/* <button
+        type="button"
+        className={styles.removeList}
+        onClick={() => removeList()}
+      >
+        Apagar tudo
+      </button> */}
     </form>
   )
 }

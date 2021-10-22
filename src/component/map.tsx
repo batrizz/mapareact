@@ -34,7 +34,23 @@ function LocationMarker({ markers, setMarkers }: Props) {
     <>
       {markers.map(marker => (
         <div key={`${marker.lat},${marker.lng}`}>
-          <Marker position={[marker.lat, marker.lng]} draggable={true}>
+          <Marker
+            position={[marker.lat, marker.lng]}
+            draggable={true}
+            eventHandlers={{
+              dragend: e => {
+                setMarkers([
+                  ...markers,
+                  {
+                    id: markers.length + 1,
+                    lat: e.target._latlng.lat.toFixed(4),
+                    lng: e.target._latlng.lng.toFixed(4),
+                    radius: 1000
+                  }
+                ])
+              }
+            }}
+          >
             <Popup position={[marker.lat, marker.lng]}>
               Coordenada: {[marker.lat, ' / ', marker.lng]}
             </Popup>
