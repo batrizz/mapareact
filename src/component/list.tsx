@@ -1,4 +1,5 @@
 import { marker } from 'leaflet'
+import { memo } from 'react'
 import styles from '../styles/list.module.scss'
 
 type Marker = {
@@ -11,10 +12,8 @@ type Props = {
   markers: Marker[]
   setMarkers: React.Dispatch<React.SetStateAction<any[]>>
 }
-export function List({ markers, setMarkers }: Props) {
-  function removeList() {
-    setMarkers([])
-  }
+function List({ markers, setMarkers }: Props) {
+
   return (
     <form className={styles.list}>
       <div className={styles.info}>
@@ -55,20 +54,15 @@ export function List({ markers, setMarkers }: Props) {
               <img
                 className={styles.trash}
                 src="/trash.svg"
-                alt="Deletar"
+                alt=""
                 onClick={() => deletarCoordenada()}
               />
             </div>
           )
         })}
       </ul>
-      {/* <button
-        type="button"
-        className={styles.removeList}
-        onClick={() => removeList()}
-      >
-        Apagar tudo
-      </button> */}
     </form>
   )
 }
+
+export default memo(List)

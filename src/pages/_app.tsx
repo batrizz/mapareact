@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { List } from '../component/list'
+import  List  from '../component/list'
 import '../styles/styles.scss'
 
 type Props = {
