@@ -19,6 +19,7 @@ const Map = ({ markers, setMarkers }: Props) => {
       zoom={12}
       scrollWheelZoom={false}
       style={{ height: '100%', width: '100%' }}
+    
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <LocationMarker markers={markers} setMarkers={setMarkers} />
